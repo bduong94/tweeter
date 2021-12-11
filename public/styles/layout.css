@@ -56,3 +56,9 @@ body {
   justify-content: center;
   align-items: flex-end;
  }
+
+ header div{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
