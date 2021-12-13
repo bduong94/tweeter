@@ -15,17 +15,17 @@ nav span {
     font-size: 1.25em;
 }
   
-.new-tweet {
+.nav-new-tweet {
     font-size: 0.75em;
 }
   
-.new-tweet div{
+.nav-new-tweet div{
     font-family: sans-serif;
     justify-content: center;
     align-items: flex-end;
 }
    
-.new-tweet .fas{
+.nav-new-tweet .fas{
     display:flex;
     color:red;
     justify-content: center;
