@@ -22,7 +22,7 @@ section{
 }
 
 .tweet-footer button{
-    background-color: rgb(31, 164, 241);
+    background-color: #4056A1;
     color: white;
     padding: 0 0.5rem;
     text-transform: uppercase;
@@ -35,9 +35,14 @@ section{
     padding: 0.2em;
 }
 
+.posted-tweet:hover{
+    box-shadow: 5px 5px 3px rgb(163, 162, 162);
+}
+
 .posted-tweet header{
     display: flex;
     justify-content: space-between;
+    padding: 0.25em 0;
 }
 
 .posted-tweet div{
@@ -50,4 +55,9 @@ section{
     font-size: medium;
     justify-content: space-between;
     padding: 0.25em;
+    color: #4056A1;
+}
+
+.posted-tweet footer i:hover{
+    color: #b4a307;
 }
