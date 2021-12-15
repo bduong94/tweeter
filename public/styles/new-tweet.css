@@ -2,10 +2,10 @@ section{
     display: flex;
     flex-direction: column;
     width: 90vw;
-    margin: 0 auto;
+    margin: 1em auto;
 }
 
-section textarea{
+.new-tweet textarea{
     display: flex;
     width: 90vw;
     background-color: transparent;
@@ -27,4 +27,27 @@ section textarea{
     padding: 0 0.5rem;
     text-transform: uppercase;
     border: none;
+}
+
+.posted-tweet{
+    display:flex;
+    border: medium solid black;
+    padding: 0.2em;
+}
+
+.posted-tweet header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.posted-tweet div{
+    border-bottom: medium solid black;
+    padding: 1em 0.25em;
+}
+
+.posted-tweet footer{
+    display: flex;
+    font-size: medium;
+    justify-content: space-between;
+    padding: 0.25em;
 }
