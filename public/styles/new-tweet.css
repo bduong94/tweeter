@@ -1,63 +1,63 @@
-section{
-    display: flex;
-    flex-direction: column;
-    width: 90vw;
-    margin: 1em auto;
+section {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  margin: 0.5em auto;
 }
 
-.new-tweet textarea{
-    display: flex;
-    width: 90vw;
-    background-color: transparent;
-    border: none;
-    resize: none;
-    border-bottom: medium solid black;
+.new-tweet textarea {
+  display: flex;
+  width: 90vw;
+  background-color: transparent;
+  border: none;
+  resize: none;
+  border-bottom: medium solid black;
 }
 
-.tweet-footer{
-    display: flex;
-    font-family: "Bungee", sans-serif;
-    justify-content: space-between;
-    padding-top: 10px;
+.tweet-footer {
+  display: flex;
+  font-family: "Bungee", sans-serif;
+  justify-content: space-between;
+  padding-top: 10px;
 }
 
-.tweet-footer button{
-    background-color: #4056A1;
-    color: white;
-    padding: 0 0.5rem;
-    text-transform: uppercase;
-    border: none;
+.tweet-footer button {
+  background-color: #4056a1;
+  color: white;
+  padding: 0 0.5rem;
+  text-transform: uppercase;
+  border: none;
 }
 
-.posted-tweet{
-    display:flex;
-    border: medium solid black;
-    padding: 0.2em;
+.posted-tweet {
+  display: flex;
+  border: medium solid black;
+  padding: 0.2em;
 }
 
-.posted-tweet:hover{
-    box-shadow: 5px 5px 3px rgb(163, 162, 162);
+.posted-tweet:hover {
+  box-shadow: 5px 5px 3px rgb(163, 162, 162);
 }
 
-.posted-tweet header{
-    display: flex;
-    justify-content: space-between;
-    padding: 0.25em 0;
+.posted-tweet header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25em 0;
 }
 
-.posted-tweet div{
-    border-bottom: medium solid black;
-    padding: 1em 0.25em;
+.posted-tweet div {
+  border-bottom: medium solid black;
+  padding: 1em 0.25em;
 }
 
-.posted-tweet footer{
-    display: flex;
-    font-size: medium;
-    justify-content: space-between;
-    padding: 0.25em;
-    color: #4056A1;
+.posted-tweet footer {
+  display: flex;
+  font-size: medium;
+  justify-content: space-between;
+  padding: 0.25em;
+  color: #4056a1;
 }
 
-.posted-tweet footer i:hover{
-    color: #b4a307;
+.posted-tweet footer i:hover {
+  color: #b4a307;
 }
