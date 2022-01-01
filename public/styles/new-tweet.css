@@ -31,6 +31,7 @@ section {
 
 .posted-tweet {
   display: flex;
+  flex-direction: column;
   border: medium solid black;
   padding: 0.2em;
 }
@@ -42,10 +43,20 @@ section {
 .posted-tweet header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0.25em 0;
 }
 
-.posted-tweet div {
+.posted-tweet header span {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  padding-right: 0.5em;
+}
+
+.tweetedText {
   border-bottom: medium solid black;
   padding: 1em 0.25em;
 }

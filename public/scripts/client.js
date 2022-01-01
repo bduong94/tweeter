@@ -5,10 +5,6 @@
  */
 
 $(document).ready(function () {
-  const createTweetElement = function () {};
-
-  const postTweet = document.querySelector(".tweet-footer button");
-
   //Test Code
   const tweetData = {
     user: {
@@ -21,22 +17,39 @@ $(document).ready(function () {
     },
     created_at: 1461116232227,
   };
-});
 
-/* <section class="posted-tweet">
+  //Selects tweetsContainer
+  const tweetsContainer = document.querySelector("#tweets-container");
+
+  //Create new element using tweetData object
+  const createTweetElement = function (tweet) {
+    let newTweet = `
+      <section id="tweets-container">
+      <article class="posted-tweet">
         <header>
-          <span>Bob</span>
-          <span>@Bob</span>
+          <span>
+            <img class="avatar" src="${tweetData["user"]["avatars"]}" alt="" />
+            <div>${tweet["user"]["name"]}</div>
+          </span>
+          <span>${tweet["user"]["handle"]}</span>
         </header>
-        <div>
-          <span>I am having a wonderful day today!</span>
-        </div>
+        <div class="tweetedText">${tweet["content"]["text"]}</div>
         <footer>
-          <span>10 days ago</span>
+          <span>${tweet["created_at"]}</span>
           <span>
             <i class="fas fa-flag"></i>
             <i class="fas fa-retweet"></i>
             <i class="fas fa-heart"></i>
           </span>
         </footer>
-      </section> */
+      </article>
+    </section>`;
+
+    return newTweet;
+  };
+
+  let $newTweet = $(createTweetElement(tweetData));
+  $("#tweets-container").append($newTweet);
+
+  // const postTweet = document.querySelector(".tweet-footer button");
+});
