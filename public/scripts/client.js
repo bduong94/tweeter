@@ -6,29 +6,39 @@
 
 $(document).ready(function () {
   //Test Code
-  const tweetData = {
-    user: {
-      name: "Newton",
-      avatars: "https://i.imgur.com/73hZDYK.png",
-      handle: "@SirIsaac",
+  const data = [
+    {
+      user: {
+        name: "Newton",
+        avatars: "https://i.imgur.com/73hZDYK.png",
+        handle: "@SirIsaac",
+      },
+      content: {
+        text: "If I have seen further it is by standing on the shoulders of giants",
+      },
+      created_at: 1461116232227,
     },
-    content: {
-      text: "If I have seen further it is by standing on the shoulders of giants",
+    {
+      user: {
+        name: "Descartes",
+        avatars: "https://i.imgur.com/nlhLi3I.png",
+        handle: "@rd",
+      },
+      content: {
+        text: "Je pense , donc je suis",
+      },
+      created_at: 1461113959088,
     },
-    created_at: 1461116232227,
-  };
+  ];
 
-  //Selects tweetsContainer
-  const tweetsContainer = document.querySelector("#tweets-container");
-
-  //Create new element using tweetData object
+  //Create new element using tweetData object - Helper function
   const createTweetElement = function (tweet) {
     let newTweet = `
       <section id="tweets-container">
       <article class="posted-tweet">
         <header>
           <span>
-            <img class="avatar" src="${tweetData["user"]["avatars"]}" alt="" />
+            <img class="avatar" src="${tweet["user"]["avatars"]}" alt="" />
             <div>${tweet["user"]["name"]}</div>
           </span>
           <span>${tweet["user"]["handle"]}</span>
@@ -48,8 +58,15 @@ $(document).ready(function () {
     return newTweet;
   };
 
-  let $newTweet = $(createTweetElement(tweetData));
-  $("#tweets-container").append($newTweet);
+  //Creates all tweets
+  const renderTweets = function (tweetData) {
+    for (let tweets of tweetData) {
+      let $newTweet = $(createTweetElement(tweets));
+      $("#tweets-container").append($newTweet);
+    }
+  };
+
+  renderTweets(data);
 
   // const postTweet = document.querySelector(".tweet-footer button");
 });
