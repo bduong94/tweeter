@@ -5,6 +5,19 @@
  */
 
 $(document).ready(function () {
+  //Clone tweets container
+  let tweetsContainer = $("tweets-container").clone();
+
+  //Validation function
+  const validate = function (text) {
+    if (text === "text=") {
+      alert("Tweet cannot be empty!");
+    } else if (text.length > 145) {
+      alert("Tweet cannot exceed 140 characters!");
+    } else {
+      return true;
+    }
+  };
   //Create new element using tweetData object - Helper function
   const createTweetElement = function (tweet) {
     let newTweet = `
@@ -42,21 +55,30 @@ $(document).ready(function () {
 
   //Prevent form submission
   $("form").submit(function (event) {
+    let $text = $(this).serialize();
     event.preventDefault();
-    $.post("/tweets", $(this).serialize());
+    if (validate($text)) {
+      $.post("/tweets", $text);
+      this.reset();
+      loadTweets();
+    }
   });
 
   //Fetches tweets from the http://localhost:8080/tweets page
   const loadTweets = function () {
-    console.log("Button clicked, performing ajax call...");
     $.get("/tweets", function (data) {
       renderTweets(data);
     });
   };
 
-  //Loads tweets every time button is clicked
-  $("button").on("click", function () {
-    console.log("Button clicked, performing ajax call...");
-    $.get("/tweets", loadTweets);
-  });
+  //Loads initial tweets
+  loadTweets();
+
+  // //Loads tweets every time button is clicked
+  // $("form").on("submit", function (event) {
+  //   event.preventDefault();
+  //   console.log($(this).serialize());
+  //   console.log("Button clicked, performing ajax call...");
+  //   $.get("/tweets", loadTweets());
+  // });
 });

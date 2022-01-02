@@ -57,6 +57,7 @@ section {
 }
 
 .tweetedText {
+  overflow-wrap: break-word;
   border-bottom: medium solid black;
   padding: 1em 0.25em;
 }
