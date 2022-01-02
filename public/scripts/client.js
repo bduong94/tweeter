@@ -58,7 +58,7 @@ $(document).ready(function () {
     return newTweet;
   };
 
-  //Creates all tweets
+  //Function that creates all tweets
   const renderTweets = function (tweetData) {
     for (let tweets of tweetData) {
       let $newTweet = $(createTweetElement(tweets));
@@ -66,7 +66,15 @@ $(document).ready(function () {
     }
   };
 
+  //Creates tweets
   renderTweets(data);
+
+  //Prevent form submission
+  $("form").submit(function (event) {
+    event.preventDefault();
+    console.log($(this).serialize());
+    $.post("/tweets", $(this).serialize());
+  });
 
   // const postTweet = document.querySelector(".tweet-footer button");
 });
