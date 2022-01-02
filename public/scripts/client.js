@@ -5,15 +5,12 @@
  */
 
 $(document).ready(function () {
-  //Clone tweets container
-  let tweetsContainer = $("tweets-container").clone();
-
   //Validation function
   const validate = function (text) {
     if (text === "text=") {
-      alert("Tweet cannot be empty!");
+      return "empty";
     } else if (text.length > 145) {
-      alert("Tweet cannot exceed 140 characters!");
+      return "max";
     } else {
       return true;
     }
@@ -21,7 +18,6 @@ $(document).ready(function () {
   //Create new element using tweetData object - Helper function
   const createTweetElement = function (tweet) {
     let newTweet = `
-      <section id="tweets-container">
       <article class="posted-tweet">
         <header>
           <span>
@@ -40,15 +36,15 @@ $(document).ready(function () {
           </span>
         </footer>
       </article>
-    </section>`;
+`;
 
     return newTweet;
   };
 
   //Function that creates all tweets
   const renderTweets = function (tweetData) {
-    for (let tweets of tweetData) {
-      let $newTweet = $(createTweetElement(tweets));
+    for (let i = tweetData.length - 1; i > -1; i--) {
+      let $newTweet = $(createTweetElement(tweetData[i]));
       $("#tweets-container").append($newTweet);
     }
   };
@@ -57,10 +53,17 @@ $(document).ready(function () {
   $("form").submit(function (event) {
     let $text = $(this).serialize();
     event.preventDefault();
-    if (validate($text)) {
+    if (validate($text) === "empty") {
+      alert("Tweet cannot be empty!");
+    } else if (validate($text) === "max") {
+      alert("Tweet cannot exceed 140 characters!");
+    } else {
       $.post("/tweets", $text);
       this.reset();
-      loadTweets();
+      $("#tweets-container").replaceWith(
+        '<section id="tweets-container"></section>'
+      );
+      setTimeout(loadTweets, 0);
     }
   });
 
@@ -73,12 +76,4 @@ $(document).ready(function () {
 
   //Loads initial tweets
   loadTweets();
-
-  // //Loads tweets every time button is clicked
-  // $("form").on("submit", function (event) {
-  //   event.preventDefault();
-  //   console.log($(this).serialize());
-  //   console.log("Button clicked, performing ajax call...");
-  //   $.get("/tweets", loadTweets());
-  // });
 });
