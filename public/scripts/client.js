@@ -15,6 +15,14 @@ $(document).ready(function () {
       return true;
     }
   };
+
+  //Escape function
+  const escapeText = function (text) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(text));
+    return div.innerHTML;
+  };
+
   //Create new element using tweetData object - Helper function
   const createTweetElement = function (tweet) {
     let newTweet = `
@@ -26,7 +34,7 @@ $(document).ready(function () {
           </span>
           <span>${tweet["user"]["handle"]}</span>
         </header>
-        <div class="tweetedText">${tweet["content"]["text"]}</div>
+        <div class="tweetedText">${escapeText(tweet["content"]["text"])}</div>
         <footer>
           <span>${timeago.format(tweet["created_at"])}</span>
           <span>
@@ -49,7 +57,17 @@ $(document).ready(function () {
     }
   };
 
-  //Prevent form submission
+  //Fetches tweets from the http://localhost:8080/tweets page
+  const loadTweets = function () {
+    $.get("/tweets", function (data) {
+      renderTweets(data);
+    });
+  };
+
+  //Loads initial tweets
+  loadTweets();
+
+  //Prevent form submission and reloads tweets
   $("form").submit(function (event) {
     let $text = $(this).serialize();
     event.preventDefault();
@@ -63,17 +81,7 @@ $(document).ready(function () {
       $("#tweets-container").replaceWith(
         '<section id="tweets-container"></section>'
       );
-      setTimeout(loadTweets, 0);
+      setTimeout(loadTweets, 250);
     }
   });
-
-  //Fetches tweets from the http://localhost:8080/tweets page
-  const loadTweets = function () {
-    $.get("/tweets", function (data) {
-      renderTweets(data);
-    });
-  };
-
-  //Loads initial tweets
-  loadTweets();
 });
