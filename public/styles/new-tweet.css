@@ -74,3 +74,16 @@ section {
 .posted-tweet footer i:hover {
   color: #b4a307;
 }
+
+#error-messages {
+  display: none;
+  color: #cc0033;
+  background-color: #fce4e4;
+  border: 1px solid #fcc2c3;
+  float: left;
+  padding: 20px 30px;
+}
+
+#tweets-container {
+  display: none;
+}
