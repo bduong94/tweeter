@@ -7,7 +7,7 @@ section {
 
 .new-tweet textarea {
   display: flex;
-  width: 90vw;
+  width: 100%;
   background-color: transparent;
   border: none;
   resize: none;
