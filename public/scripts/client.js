@@ -91,4 +91,18 @@ $(document).ready(function () {
       setTimeout(loadTweets, 100);
     }
   });
+
+  //Show/Hide compose tweets
+  $(".nav-new-tweet").click(function () {
+    let $composetweet = $(".new-tweet");
+    let $textBox = $("textarea");
+    let displayValue = $composetweet.css("display");
+
+    if (displayValue === "none") {
+      $composetweet.slideDown();
+      $textBox.focus();
+    } else {
+      $composetweet.slideUp();
+    }
+  });
 });
