@@ -41,7 +41,7 @@ main {
 
   body .profile {
     width: 40%;
-    padding: auto;
+    padding: 3em 0 2em;
     margin: 3em auto;
   }
 
