@@ -4,9 +4,9 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(document).ready(function () {
+$(document).ready(function() {
   //Validation function
-  const validate = function (text) {
+  const validate = function(text) {
     if (text === "text=") {
       return "empty";
     } else if (text.length > 145) {
@@ -17,14 +17,14 @@ $(document).ready(function () {
   };
 
   //Escape function
-  const escapeText = function (text) {
+  const escapeText = function(text) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(text));
     return div.innerHTML;
   };
 
   //Create new element using tweetData object - Helper function
-  const createTweetElement = function (tweet) {
+  const createTweetElement = function(tweet) {
     let newTweet = `
       <article class="posted-tweet">
         <header>
@@ -50,7 +50,7 @@ $(document).ready(function () {
   };
 
   //Function that creates all tweets
-  const renderTweets = function (tweetData) {
+  const renderTweets = function(tweetData) {
     for (let i = tweetData.length - 1; i > -1; i--) {
       let $newTweet = $(createTweetElement(tweetData[i]));
       $("#tweets-container").append($newTweet);
@@ -58,8 +58,8 @@ $(document).ready(function () {
   };
 
   //Fetches tweets from the http://localhost:8080/tweets page
-  const loadTweets = function () {
-    $.get("/tweets", function (data) {
+  const loadTweets = function() {
+    $.get("/tweets", function(data) {
       renderTweets(data);
     });
     $("#tweets-container").slideDown();
@@ -69,7 +69,7 @@ $(document).ready(function () {
   loadTweets();
 
   //Prevent form submission and reloads tweets
-  $("form").submit(function (event) {
+  $("form").submit(function(event) {
     let $text = $(this).serialize();
     let $errorMessages = $("#error-messages");
     event.preventDefault();
@@ -93,7 +93,7 @@ $(document).ready(function () {
   });
 
   //Show/Hide compose tweets
-  $(".nav-new-tweet").click(function () {
+  $(".nav-new-tweet").click(function() {
     let $composetweet = $(".new-tweet");
     let $textBox = $("textarea");
     let displayValue = $composetweet.css("display");
@@ -104,5 +104,21 @@ $(document).ready(function () {
     } else {
       $composetweet.slideUp();
     }
+  });
+
+  //Show button once
+  $(document).scroll(function() {
+    let $scrollPosition = $(this).scrollTop();
+    let $scrollToTopButton = $(".fa-angle-double-up");
+    if ($scrollPosition > 0) {
+      $scrollToTopButton.fadeIn();
+    } else {
+      $scrollToTopButton.fadeOut();
+    }
+  });
+
+  //Scroll to the top
+  $(".fa-angle-double-up").click(function() {
+    $(document).scrollTop(0);
   });
 });

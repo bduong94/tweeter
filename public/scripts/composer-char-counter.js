@@ -1,8 +1,8 @@
-$(document).ready(function () {
+$(document).ready(function() {
   const tweetText = document.querySelector(".new-tweet textarea");
   const charLimit = 140;
 
-  tweetText.addEventListener("input", function () {
+  tweetText.addEventListener("input", function() {
     let tweetLength = this.value.length;
     let currentLimit = charLimit - tweetLength;
     let characterLimit = $(this).next().children(".counter");

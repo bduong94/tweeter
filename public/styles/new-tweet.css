@@ -87,3 +87,15 @@ section {
 #tweets-container {
   display: none;
 }
+
+.container .fa-angle-double-up {
+  display: none;
+  position: fixed;
+  font-size: 30px;
+  color: white;
+  background-color: red;
+  border-radius: 50%;
+  padding: 0.5em;
+  bottom: 2em;
+  right: 0.5em;
+}
