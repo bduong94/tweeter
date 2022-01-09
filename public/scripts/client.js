@@ -88,7 +88,7 @@ $(document).ready(function() {
       $("#tweets-container").replaceWith(
         '<section id="tweets-container"></section>'
       );
-      setTimeout(loadTweets, 100);
+      setTimeout(loadTweets, 350);
     }
   });
 
