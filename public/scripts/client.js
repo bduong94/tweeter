@@ -16,13 +16,6 @@ $(document).ready(function() {
     }
   };
 
-  //Escape function
-  const escapeText = function(text) {
-    let div = document.createElement("div");
-    div.appendChild(document.createTextNode(text));
-    return div.innerHTML;
-  };
-
   //Create new element using tweetData object - Helper function
   const createTweetElement = function(tweet) {
     let newTweet = `
@@ -34,7 +27,7 @@ $(document).ready(function() {
           </span>
           <span>${tweet["user"]["handle"]}</span>
         </header>
-        <div class="tweetedText">${escapeText(tweet["content"]["text"])}</div>
+        <div class="tweetedText">${tweet["content"]["text"]}</div>
         <footer>
           <span>${timeago.format(tweet["created_at"])}</span>
           <span>
